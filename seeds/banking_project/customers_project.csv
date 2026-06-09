@@ -1,0 +1,11 @@
+customer_id,customer_name,city,state,email,phone,customer_status
+C001,Arun,Chennai,Tamil Nadu,arun@gmail.com,987650001,Active
+C002,Priya,Bengaluru,Karnataka,priya@gmail.com,987650002,Active
+C003,Rahul,Hyderabad,Telangana,rahul@gmail.com,987650003,Inactive
+C004,Meena,Chennai,Tamil Nadu,meena@gmail.com,987650004,Active
+C005,Karthik,Coimbatore,Tamil Nadu,karthik@gmail.com,987650005,Active
+C006,Divya,Pune,Maharashtra,divya@gmail.com,987650006,Inactive
+C007,Vikram,Mumbai,Maharashtra,vikram@gmail.com,987650007,Active
+C008,Anitha,Kochi,Kerala,anitha@gmail.com,987650008,Active
+C009,Suresh,Madurai,Tamil Nadu,suresh@gmail.com,987650009,Active
+C010,Lakshmi,Mysuru,Karnataka,lakshmi@gmail.com,987650010,Inactive

@@ -1,0 +1,47 @@
+version: 2
+ 
+models:
+  - name: dim_patient
+    description:
+      Dimension table containing patient demographic and medical details.
+ 
+    columns:
+      - name: unique_field
+        description: "Surrogate key uniquely identifying each patient record"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+
+      - name: date_of_admission
+        description: "Admission date when the patient gets admitted"
+
+      - name: gender
+        description: "Gender of the patient; expected values may include Male, Female, or Other"
+        tests:
+          - accepted_values:
+                arguments:
+                    values: ['Female','Male']
+ 
+      - name: blood_type
+        description: "Patient's blood group (e.g., A+, O-, B+, etc.)"
+        tests:
+          - accepted_values:
+              arguments:
+                   values: ['A-','B+','A+','AB-','O-ve','B-','AB+','O+']
+              config:
+                   severity: warn
+ 
+ 
+      - name: medical_condition
+        description: "Medical condition(s) diagnosed for the patient"
+ 
+      - name: current_record_flag
+        description: "Indicates if the record is the current active record (used for SCD tracking)"
+ 
+      - name: created_date
+        description: "Timestamp when the record was initially created in the system"
+ 
+      - name: updated_date
+        description: "Timestamp when the record was last updated"

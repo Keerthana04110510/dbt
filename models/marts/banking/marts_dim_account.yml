@@ -1,0 +1,33 @@
+version: 2
+ 
+models:
+  - name: dim_account
+    description:
+      Dimension table containing bank account details.
+    columns:
+      - name: account_sk
+        description: "Surrogate key generated for each account"
+        tests:
+          - not_null
+          - unique
+ 
+      - name: account_number
+        description: "Unique business identifier for the account"
+        tests:
+          - not_null
+ 
+      - name: account_type
+        description: "Type of account (e.g., Savings, Current)"
+        tests:
+          - accepted_values:
+                arguments:
+                    values: ['savings', 'current', 'checking']
+ 
+      - name: open_date
+        description: "Date when the account was opened"
+ 
+      - name: created_date
+        description: "Timestamp when the record was created in the system"
+ 
+      - name: updated_date
+        description: "Timestamp when the account record was last updated"

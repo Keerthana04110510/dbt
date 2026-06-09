@@ -1,0 +1,52 @@
+version: 2
+models:
+  - name: fct_transactions
+    description:
+      Fact table containing all banking transactions.
+    columns:
+      - name: txn_sk
+        description: "Surrogate key generated for the transaction record"
+        tests:
+          - not_null
+          - unique
+ 
+      - name: txn_id
+        description: "Business key identifying the transaction from source systems"
+        tests:
+          - not_null
+          - unique  
+ 
+      - name: account_number
+        description: "Degenerate dimension representing the account number"
+        tests:
+          - not_null
+          - relationships:
+                arguments:
+                   to: ref('dim_account')
+                   field: account_number
+ 
+      - name: account_sk
+        description: "Foreign key referencing dim_accounts table"
+ 
+      - name: txn_date
+        description: "Date on which the transaction occurred"
+ 
+      - name: amount
+        description: "Monetary value of the transaction; positive for credits and negative for debits"
+ 
+      - name: txn_type
+        description: "Type of transaction (e.g., credit, debit)"
+        tests:
+          - accepted_values:
+              arguments:
+                  values: ['payment', 'withdraw', 'transfer', 'deposit']
+ 
+      - name: txn_status
+        description: "Lifecycle status of the transaction (e.g., Success, Failed, Pending)"
+        tests:
+          - accepted_values:
+              arguments:
+                  values: ['cleared', 'pending', 'reversed','new']
+ 
+      - name: updated_date
+        description: "Timestamp when the record was last updated"

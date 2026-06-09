@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: stg_transactions
+    tables:
+      - name: bank_transactions
+        description: Raw ledger of all customer money movements
+        columns:
+          # - name: txn_id
+          #   tests:
+          #     - not_null
+          #     - unique
+          - name: account_number
+              - not_null
+
+      

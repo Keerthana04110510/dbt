@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: stage
+    database: DEMO_DB
+    schema: PUBLIC
+    tables:
+     - name: customers
+     - name: policies
+     - name: bank_accounts
+     - name: bank_transactions  
+     - name: seed_health_care
+
+
+
+
+
+

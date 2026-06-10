@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: dim_e_customers
+    description: It describes the customers description table
+    columns:
+      - name: customer_sk
+        description: Surrogate key of the table 
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: unique business key of the table
+        tests:
+          - unique
+          - not_null
+      - name: city
+        description: keeps track of the city column
+
+      - name: email
+        description: email id of the customers
+      
+      - name: status
+        description: describes the customers activity
+        tests:
+          - accepted_values:
+              values: ['ACTIVE',INACTIVE]
+      
+      - name: signup_date
+        description: describes the date when the customer signup into first time
+
+      - name: created_at
+        description: describes the date when the data was loaded into warehouse
+
+      - name: updated_at
+        description: describes the updated date when anything changed in the column
+
+
+
+
+              
+              

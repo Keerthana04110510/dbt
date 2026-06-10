@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: ecomm_stage
+    database: demo_db
+    schema: dbt_keerthana04110510
+    tables:
+      - name: ecomm_customers
+        columns:
+          - name: customer_id
+            description: It contains the unique id or the business id of the customer table
+            tests:
+              - unique
+              - not_null
+                  
+      - name: ecomm_products
+        columns:
+          - name: product_id
+            description: It contains the unique id or the business id of the product table
+            tests:
+              - unique
+              - not_null
+      - name: ecomm_orders
+        columns:
+          - name: order_id
+            description: It contains the unique id or the business id of the order table
+            tests:
+              - unique
+              - not_null

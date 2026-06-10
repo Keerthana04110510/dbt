@@ -7,5 +7,4 @@ SELECT *,
     END AS current_record_flag,
     dbt_valid_from AS created_date,
     dbt_valid_to AS updated_date
-
 FROM {{ ref('snap_patient') }}

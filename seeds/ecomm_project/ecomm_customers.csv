@@ -1,0 +1,6 @@
+customer_id,customer_name,email,city,signup_date,status
+100,John Doe,john@gmail.com,California,2024-01-10,ACTIVE
+102,Emma Smith,emma@gmail.com,Chicago,2024-01-15,ACTIVE
+103,David Lee,david@gmail.com,Dallas,2024-02-01,INACTIVE
+104,Sophia Brown,sophia@gmail.com,Boston,2024-02-10,ACTIVE
+105,James Wilson,james@gmail.com,Seattle,2024-03-05,ACTIVE

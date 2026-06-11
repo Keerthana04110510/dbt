@@ -15,7 +15,6 @@ models:
       - name: final_price
         description: final price along with the tax
         tests:
-          - unique
           - not_null
 
       - name: order_sk

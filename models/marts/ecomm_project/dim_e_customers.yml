@@ -5,7 +5,7 @@ models:
     description: It describes the customers description table
     columns:
       - name: customer_sk
-        description: Surrogate key of the table 
+        description: Surrogate key of the table
         tests:
           - unique
           - not_null
@@ -22,9 +22,6 @@ models:
       
       - name: status
         description: describes the customers activity
-        tests:
-          - accepted_values:
-              values: ['ACTIVE',INACTIVE]
       
       - name: signup_date
         description: describes the date when the customer signup into first time

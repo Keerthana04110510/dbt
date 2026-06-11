@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fct_orders_summary
+    description: describes the order details
+    columns:
+      - name: price
+        description: decribes the price
+      - name: order_id
+        description: uniques business key of the table
+        tests:
+          - unique
+          - not_null
+              
+      - name: final_price
+        description: final price along with the tax
+        tests:
+          - unique
+          - not_null
+
+      - name: order_sk
+        description: surrogate key of the table
+        tests:
+          - unique
+          - not_null
+
+      - name: status
+        description: defines the status of the table
+  
+              

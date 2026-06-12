@@ -1,8 +1,8 @@
 {{
     config(
         materialized='incremental',
-        unique_key='order_id',
-        on_schema_change='sync_all_columns'
+        on_schema_change='sync_all_columns',
+        unique_key = ['order_id', 'order_sk']
     )
 }}
 

@@ -1,0 +1,6 @@
+product_id,product_name,category,subcategory,price,is_active,last_updated_at
+P101,Laptop,Electronics,Computers,1200,Y,2025-06-01
+P102,Mouse,Electronics,Accessories,25,Y,2025-06-01
+P103,Desk,Furniture,Office,300,Y,2025-06-01
+P104,Chair,Furniture,Office,150,Y,2025-06-01
+P105,Monitor,Electronics,Computers,450,N,2025-06-01

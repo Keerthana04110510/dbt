@@ -1,0 +1,4 @@
+store_id,store_name,city,state,opened_date,last_updated_at
+S001,Downtown Store,New York,NY,2020-01-01,2025-06-01
+S002,Central Store,Chicago,IL,2020-05-01,2025-06-01
+S003,West Store,Seattle,WA,2021-01-01,2025-06-01

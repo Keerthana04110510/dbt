@@ -4,5 +4,6 @@ sources:
   - name: raw
     database: demo_db
     schema: dbt_keerthana04110510
+
     tables:
       - name: raw_orders

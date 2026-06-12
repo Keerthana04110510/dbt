@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: store_stage
+    database: demo_db
+    schema: dbt_keerthana04110510
+    tables:
+      - name: store_customers
+       
+      - name: store_products
+        
+      - name: store_orders
+       

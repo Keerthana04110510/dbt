@@ -1,0 +1,43 @@
+ models:
+         - name: marts_email_track
+           description: "it keeps the emailin track"
+           columns:
+             - name: customer_id
+               data_type: number
+               description: "unique id of the table"
+       
+             - name: customer_name
+               data_type: varchar
+               description: "It contains the customer name"
+       
+             - name: customer_email
+               data_type: varchar
+               description: "it conatins the email of the customer"
+       
+             - name: customer_city
+               data_type: varchar
+               description: "it contains the city of the customer"
+       
+             - name: customer_state
+               data_type: varchar
+               description: "it defines state of the customer"
+       
+             - name: customer_status
+               data_type: varchar
+               description: "it defines the status"
+       
+             - name: signup_date
+               data_type: date
+               description: "it says when they login/signin first time"
+       
+             - name: customer_sk
+               data_type: varchar
+               description: "generated surrogate key of the table based on customer_id"
+       
+             - name: created_at
+               data_type: timestamp_ltz
+               description: "when it was first created into the db"
+       
+             - name: last_updated_at
+               data_type: varchar
+               description: "when the record was updated at last"

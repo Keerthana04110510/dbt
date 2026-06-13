@@ -5,3 +5,4 @@ customer_id,customer_name,email,city,state,customer_status,signup_date,last_upda
 104,Sophia Brown,sophia@gmail.com,Boston,MA,ACTIVE,2024-02-10,2025-06-01
 105,James Wilson,james@gmail.com,Seattle,WA,ACTIVE,2024-03-01,2025-06-01
 106,Lisa Ray,lisa@gmail.com,Miami,FL,PENDING,2024-03-15,2025-06-01
+107,sheela,sheela@gmail.com,london,NY,active,2024-03-14,2025-06-01

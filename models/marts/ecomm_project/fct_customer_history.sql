@@ -13,4 +13,4 @@ select *,
            then 'Y'
            else 'N'
         end as current_flag
-        from {{ ref('snap_customers')}}
+        from {{ ref('snap_sales')}}

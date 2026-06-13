@@ -1,13 +1,14 @@
-{% snapshot snap_customers %}
+{% snapshot snap_sales %}
     {{
         config(
             target_schema='snapshot',
             target_database='demo_db',
             unique_key='customer_id',
             strategy='check',
-            check_cols=['customer_status', 'customer_city', 'customer_state']
+            check_cols=['customer_email', 'customer_city', 'customer_state']
         )
     }}
 
-    select * from {{ ref('int_sales_enriched') }}
+    select *
+    from {{ ref('int_sales_enriched') }}
  {% endsnapshot %}

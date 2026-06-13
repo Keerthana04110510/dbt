@@ -19,7 +19,7 @@ SELECT
     o.quantity,
     o.order_date,
     ({{ calculate_order_amount('o.quantity','i.price') }}) AS order_amount
-FROM {{ ref('stg_e_orders') }} o
+FROM {{ ref('stg_e_orders') }} 
 LEFT JOIN {{ ref('stg_e_customers') }} c
     ON o.customer_id = c.customer_id
 LEFT JOIN {{ ref('stg_e_products') }} i

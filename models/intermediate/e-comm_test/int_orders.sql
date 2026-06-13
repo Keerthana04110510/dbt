@@ -2,7 +2,6 @@
     config(
         materialized='view'
     )
-
 }}
 
 select order_id AS order_id, 

@@ -18,10 +18,6 @@ with source_data as (
         customer_sk
     from {{ ref('dim_store_customers') }}
 
-    {% if is_incremental() %}
-        where signup_date > (select max(signup_date) from {{ this }})
-    {% endif %}
-
 )
 
 {% if is_incremental() %}

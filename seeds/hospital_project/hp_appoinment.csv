@@ -1,0 +1,6 @@
+appointment_id,patient_id,doctor_id,appointment_date,status,consultation_fee,updated_at
+A101,P101,D101,15-01-2025,Completed,500,15-01-2025
+A102,P102,D102,15-01-2025,Cancelled,700,15-01-2025
+A103,P103,D103,16-01-2025,Completed,600,16-01-2025
+A104,P104,D101,17-01-2025,Pending,500,17-01-2025
+A105,P105,D105,18-01-2025,Completed,800,18-01-2025

@@ -1,0 +1,6 @@
+patient_id,patient_name,gender,dob,city,insurance_type,updated_at
+P101,John Smith,M,12-04-1985,New York,Premium,10-01-2025
+P102,Emma Brown,Female,25-06-1992,Chicago,Basic,11-01-2025
+P103,David Lee,Male,18-09-1978,Boston,Premium,12-01-2025
+P104,Sarah Davis,F,02-03-1995,Dallas,Standard,13-01-2025
+P105,Michael Wilson,NULL,30-07-1988,Miami,Premium,14-01-2025

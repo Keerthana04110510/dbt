@@ -4,8 +4,8 @@
     )
 }}
 
-select customer_id,
-       {{ generate_surrogate_key(['customer_id', 'email']) }} AS customer_sk,
+select distinct customer_id,
+       {{ generate_surrogate_key(['customer_id', 'email']) }} as customer_sk,
        customer_name,
        email AS customer_email,
        city AS customer_city,

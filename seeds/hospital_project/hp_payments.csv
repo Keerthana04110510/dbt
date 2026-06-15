@@ -1,0 +1,6 @@
+payment_id,appointment_id,payment_amount,payment_mode,payment_status,payment_date,updated_at
+PAY101,A101,5500,Card,Paid,15-01-2025,15-01-2025
+PAY102,A102,1200,Cash,Refunded,15-01-2025,15-01-2025
+PAY103,A103,2600,UPI,Paid,16-01-2025,16-01-2025
+PAY104,A104,500,Card,Pending,17-01-2025,17-01-2025
+PAY105,A105,7800,UPI,Paid,18-01-2025,18-01-2025

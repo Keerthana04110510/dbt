@@ -1,0 +1,77 @@
+ version: 2
+       
+models:
+         - name: dim_h_patient
+           description: "describes the patient"
+           columns:
+             - name: patient_id
+               data_type: varchar
+               description: "decribe patient id"
+               tests:
+                  - unique
+                  - not_null
+                  
+       
+             - name: patient_name
+               data_type: varchar
+               description: "patient name"
+               tests:
+                 - not_null
+                 
+       
+             - name: gender
+               data_type: varchar
+               description: "gender"
+               tests:
+                 - accepted_values:
+                    arguments:
+                      values: ['Male','Female','Unknown']
+                    config:
+                       severity: warn
+       
+             - name: dob
+               data_type: timestamp_ntz
+               description: ""
+       
+             - name: city
+               data_type: varchar
+               description: ""
+       
+             - name: insurance_type
+               data_type: varchar
+               description: ""
+       
+             - name: updated_at
+               data_type: timestamp_ntz
+               description: ""
+       
+             - name: dbt_scd_id
+               data_type: varchar
+               description: ""
+       
+             - name: dbt_updated_at
+               data_type: timestamp_ntz
+               description: ""
+       
+             - name: dbt_valid_from
+               data_type: timestamp_ntz
+               description: ""
+       
+             - name: dbt_valid_to
+               data_type: timestamp_ntz
+               description: ""
+       
+             - name: patient_sk
+               data_type: varchar
+               description: ""
+               tests:
+                  - unique
+                  - not_null
+                         
+             - name: patients_age
+               data_type: number
+               description: ""
+       
+             - name: cuurent_flag
+               data_type: varchar
+               description: ""

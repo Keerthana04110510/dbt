@@ -1,0 +1,62 @@
+version: 2
+
+sources:
+  - name: raw_hospital
+    database: demo_db
+    schema: dbt_keerthana04110510
+
+    tables:
+      - name: hp_doctors
+        config: 
+          loaded_at_field: updated_at
+          freshness:
+            warn_after:
+              count: 12
+              period: hour
+            error_after:
+              count: 24
+              period: hour
+
+      - name: hp_patients
+        config: 
+          loaded_at_field: updated_at
+          freshness:
+            warn_after:
+              count: 12
+              period: hour
+            error_after:
+              count: 24
+              period: hour
+
+      - name: hp_appoinment
+        config: 
+          loaded_at_field: updated_at
+          freshness:
+            warn_after:
+              count: 12
+              period: hour
+            error_after:
+              count: 24
+              period: hour
+
+      - name: hp_treatments
+        config: 
+          loaded_at_field: updated_at
+          freshness:
+            warn_after:
+              count: 12
+              period: hour
+            error_after:
+              count: 24
+              period: hour
+
+      - name: hp_payments
+        config: 
+          loaded_at_field: updated_at
+          freshness:
+            warn_after:
+              count: 12
+              period: hour
+            error_after:
+              count: 24
+              period: hour

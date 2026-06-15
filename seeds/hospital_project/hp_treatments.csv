@@ -1,0 +1,6 @@
+treatment_id,appointment_id,treatment_type,treatment_cost,treatment_status,updated_at
+T101,A101,Surgery,5000,Completed,15-01-2025
+T102,A102,Scan,1200,Cancelled,15-01-2025
+T103,A103,Therapy,2000,Completed,16-01-2025
+T104,A104,Checkup,500,Pending,17-01-2025
+T105,A105,Surgery,7000,Completed,18-01-2025

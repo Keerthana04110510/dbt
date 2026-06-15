@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: insurance_raw
+    database: demo_db
+    schema: dbt_keerthana04110510
+    tables:
+      - name: raw_policies
+        columns:
+          - name: policy_id
+            tests:
+              - not_null
+              - unique
+          - name: status
+            tests:
+              - accepted_values:
+                  arguments: 
+                     values: ['Active','lapsed','cancelled']
+              
+      - name: raw_claims
+      - name: raw_agent
+        columns:
+          - name: policy_id
+            tests:
+              - not_null
+
+      - name: raw_customers
+        columns:
+          - name: policy_id
+            tests:
+              - not_null
+

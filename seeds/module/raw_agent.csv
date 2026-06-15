@@ -1,0 +1,5 @@
+agent_id,agent_name,agent_email,region,hire_date,commission_rate,is_active,manager_id,created_at
+AGT001,Mark Thompson,m.thompson@insure.com,South,3/15/2018,0.08,TRUE,MGR001,3/15/2018 9:00
+AGT002,Rachel Green,r.green@insure.com,South,06-01-2019,0.07,TRUE,MGR001,06-01-2019 09:00
+AGT003,Kevin Brown,k.brown@insure.com,Central,01-10-2020,0.075,TRUE,MGR002,01-10-2020 09:00
+AGT004,Lisa White,l.white@insure.com,Central,9/20/2021,0.07,TRUE,MGR002,9/20/2021 9:00

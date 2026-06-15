@@ -1,0 +1,21 @@
+customer_id,first_name,last_name,date_of_birth,gender,email,phone,address,city,state,zip_code,customer_since,credit_score,risk_tier,created_at,updated_at
+101,James,Anderson,03-12-1985,M,james.anderson@email.com,555-0101,123 Oak St,Austin,TX,78701,01-10-2023,720,Low,01-10-2023 08:00,01-10-2023 08:00
+102,Sarah,Bennett,7/25/1990,F,sarah.bennett@email.com,555-0102,456 Maple Ave,Houston,TX,77001,1/28/2023,680,Medium,1/28/2023 9:00,1/28/2023 9:00
+103,Michael,Carter,11-08-1972,M,m.carter@email.com,555-0103,789 Pine Rd,Dallas,TX,75001,02-12-2023,750,Low,02-12-2023 10:00,02-12-2023 10:00
+104,Emily,Davis,5/30/1995,F,emily.davis@email.com,555-0104,321 Elm St,San Antonio,TX,78201,2/25/2023,610,High,2/25/2023 11:00,2/25/2023 11:00
+105,Robert,Evans,9/14/1988,M,r.evans@email.com,555-0105,654 Cedar Blvd,Austin,TX,78702,03-10-2023,590,High,03-10-2023 08:30,03-10-2023 08:30
+106,Jennifer,Foster,1/22/1979,F,j.foster@email.com,555-0106,987 Birch Lane,Houston,TX,77002,3/28/2023,700,Low,3/28/2023 9:30,3/28/2023 9:30
+107,David,Garcia,12-03-1965,M,d.garcia@email.com,555-0107,147 Walnut Dr,Dallas,TX,75002,04-12-2023,780,Low,04-12-2023 10:30,04-12-2023 10:30
+108,Lisa,Harris,4/18/1992,F,l.harris@email.com,555-0108,258 Spruce Ct,San Antonio,TX,78202,4/28/2023,655,Medium,4/28/2023 11:30,4/28/2023 11:30
+109,Thomas,Ingram,08-07-1983,M,t.ingram@email.com,555-0109,369 Ash Way,Austin,TX,78703,05-12-2023,545,High,05-12-2023 13:00,05-12-2023 13:00
+110,Patricia,Johnson,6/16/1975,F,p.johnson@email.com,555-0110,741 Hickory Pl,Houston,TX,77003,5/28/2023,725,Low,5/28/2023 9:00,5/28/2023 9:00
+111,Charles,Kim,2/28/1987,M,c.kim@email.com,555-0111,852 Magnolia St,Dallas,TX,75003,6/28/2023,695,Medium,6/28/2023 8:00,6/28/2023 8:00
+112,Barbara,Lee,10-11-1960,F,b.lee@email.com,555-0112,963 Dogwood Ave,San Antonio,TX,78203,07-12-2023,760,Low,07-12-2023 09:30,07-12-2023 09:30
+113,Steven,Martinez,07-04-1993,M,s.martinez@email.com,555-0113,159 Pecan Blvd,Austin,TX,78704,7/28/2023,630,High,7/28/2023 10:30,7/28/2023 10:30
+114,Nancy,Nelson,12/20/1997,F,n.nelson@email.com,555-0114,357 Willow Rd,Houston,TX,77004,08-12-2023,670,Medium,08-12-2023 14:00,08-12-2023 14:00
+115,Kenneth,Owen,04-05-1969,M,k.owen@email.com,555-0115,468 Poplar St,Dallas,TX,75004,8/28/2023,745,Low,8/28/2023 9:00,8/28/2023 9:00
+116,Margaret,Parker,9/17/1982,F,m.parker@email.com,555-0116,579 Cypress Dr,San Antonio,TX,78204,8/28/2023,715,Low,8/28/2023 10:00,8/28/2023 10:00
+117,Paul,Quinn,1/30/1977,M,p.quinn@email.com,555-0117,681 Sycamore Ln,Austin,TX,78705,09-12-2023,740,Low,09-12-2023 11:00,09-12-2023 11:00
+118,Sandra,Rodriguez,6/22/1991,F,s.rodriguez@email.com,555-0118,792 Cherry Ct,Houston,TX,77005,9/28/2023,575,High,9/28/2023 8:30,9/28/2023 8:30
+119,George,Smith,11-09-1984,M,g.smith@email.com,555-0119,813 Linden Way,Dallas,TX,75005,10-12-2023,710,Low,10-12-2023 09:30,10-12-2023 09:30
+120,Betty,Taylor,3/14/1978,F,b.taylor@email.com,555-0120,924 Locust Pl,San Antonio,TX,78205,10/28/2023,685,Medium,10/28/2023 10:30,10/28/2023 10:30

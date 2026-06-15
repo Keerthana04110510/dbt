@@ -1,0 +1,16 @@
+claim_id,policy_id,customer_id,claim_number,claim_date,incident_date,claim_type,claim_status,claim_amount,approved_amount,deductible,adjuster_id,description,resolution_date,created_at,updated_at
+1,1,101,CLM-2023-0001,04-10-2023,04-09-2023,Collision,Approved,8500,8000,500,ADJ001,Front-end collision at intersection,4/25/2023,04-10-2023 10:00,4/25/2023 16:00
+2,4,104,CLM-2023-0002,5/20/2023,5/18/2023,Medical,Approved,3200,2800,400,ADJ002,Emergency room visit,06-05-2023,5/20/2023 9:30,06-05-2023 14:00
+3,2,102,CLM-2023-0003,6/15/2023,6/14/2023,Water Damage,Under Review,15000,0,1000,ADJ003,Basement flooding,7/30/2023,6/15/2023 11:00,7/30/2023 15:00
+4,5,105,CLM-2023-0004,07-02-2023,07-01-2023,Theft,Denied,5000,0,0,ADJ001,Vehicle theft - policy lapsed,7/20/2023,07-02-2023 14:00,7/20/2023 11:00
+5,6,106,CLM-2023-0005,7/25/2023,7/22/2023,Fire,Approved,42000,40000,2000,ADJ004,Kitchen fire damage,08-10-2023,7/25/2023 10:30,08-10-2023 17:00
+6,8,108,CLM-2023-0006,08-12-2023,08-10-2023,Hospitalization,Approved,12500,11000,1500,ADJ002,Surgery and 3-day hospital stay,8/28/2023,08-12-2023 09:00,8/28/2023 14:30
+7,1,101,CLM-2023-0007,09-05-2023,09-04-2023,Comprehensive,Approved,2200,1900,300,ADJ003,Hail damage to vehicle,9/18/2023,09-05-2023 11:30,9/18/2023 16:00
+8,10,110,CLM-2023-0008,9/20/2023,9/19/2023,Wind Damage,Approved,8700,7500,1200,ADJ001,Roof damage from storm,10-05-2023,9/20/2023 10:00,10-05-2023 15:30
+9,12,111,CLM-2023-0009,10-08-2023,10-07-2023,Liability,Under Review,25000,0,0,ADJ004,Third-party injury claim,11/30/2023,10-08-2023 13:00,11/30/2023 17:00
+10,14,113,CLM-2023-0010,10/22/2023,10/20/2023,Medical,Approved,4800,4200,600,ADJ002,Specialist consultation and treatment,11-08-2023,10/22/2023 9:30,11-08-2023 14:00
+11,15,114,CLM-2023-0011,11-10-2023,11-09-2023,Collision,Approved,6300,5800,500,ADJ003,Rear-end accident on highway,11/25/2023,11-10-2023 10:30,11/25/2023 16:30
+12,16,115,CLM-2023-0012,11/28/2023,11/27/2023,Vandalism,Pending,3500,0,500,ADJ001,Exterior property damage,12/15/2023,11/28/2023 11:00,11/28/2023 11:00
+13,19,118,CLM-2023-0013,12-05-2023,12-04-2023,Collision,Approved,11200,10000,1200,ADJ004,Intersection collision,12/20/2023,12-05-2023 09:00,12/20/2023 15:00
+14,20,119,CLM-2023-0014,12-12-2023,12-10-2023,Theft,Pending,45000,0,2000,ADJ002,High-value jewelry theft,12/31/2023,12-12-2023 10:00,12-12-2023 10:00
+15,11,101,CLM-2023-0015,12/20/2023,12/19/2023,Water Damage,Approved,9800,8500,1300,ADJ003,Burst pipe damage,01-08-2024,12/20/2023 11:00,01-08-2024 14:00

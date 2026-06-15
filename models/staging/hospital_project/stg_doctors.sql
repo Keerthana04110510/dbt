@@ -9,5 +9,5 @@ select doctor_id AS doctor_id,
        department AS department, 
        specialization AS specialization,
        {{ doctor_salary('salary') }} AS salary,
-       to_timestamp(updated_at,'DD-MM-YYYY') as updated_at
+       try_to_date(updated_at,'DD-MM-YYYY') as updated_at
  from {{ source('raw_hospital','hp_doctors')}}

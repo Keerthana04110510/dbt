@@ -6,6 +6,17 @@ sources:
     schema: dbt_keerthana04110510
     tables:
       - name: raw_policies
+        description: "describes the policies "
+        loaded_at_field: updated_at
+        config: 
+          freshness:
+            warn_after:
+             count: 12
+             period: hour
+            error_after:
+             count: 24
+             period: hour
+
         columns:
           - name: policy_id
             tests:
@@ -18,15 +29,43 @@ sources:
                      values: ['Active','lapsed','cancelled']
               
       - name: raw_claims
+        description: " describe claims"
+        freshness:
+          warn_after:
+            count: 12
+            period: hour
+          error_after:
+            count: 24
+            period: hour
+        loaded_at_field: updated_at
+
       - name: raw_agent
+        description: " describe agent"
         columns:
           - name: policy_id
             tests:
               - not_null
+        freshness:
+          warn_after:
+            count: 12
+            period: hour
+          error_after:
+            count: 24
+            period: hour
+        loaded_at_field: updated_at
 
       - name: raw_customers
+        description: " describe customer"
         columns:
           - name: policy_id
             tests:
               - not_null
+        freshness:
+          warn_after:
+            count: 12
+            period: hour
+          error_after:
+            count: 24
+            period: hour
+        loaded_at_field: updated_at
 

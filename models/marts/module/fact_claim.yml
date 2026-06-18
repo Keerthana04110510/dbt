@@ -1,0 +1,70 @@
+ version: 2
+       
+models:
+         - name: fact_claims
+           description: "Describe the details of claims"
+           columns:
+             - name: claim_surrogate_key
+               data_type: varchar
+               description: "business key of the table"
+               tests: 
+                  - unique
+                  - not_null 
+       
+             - name: claim_id
+               data_type: number
+               description: "unique id of the table"
+               tests:
+                  - not_null 
+       
+             - name: policy_id
+               data_type: number
+               description: "uniquely identifies the policy column"
+       
+             - name: customer_id
+               data_type: number
+               description: "uniquely identifies the customer column"
+       
+             - name: claim_date
+               data_type: date
+               description: "describes the claim date "
+       
+             - name: claim_type
+               data_type: varchar
+               description: "describes the type of claim"
+       
+             - name: claim_status
+               data_type: varchar
+               description: "describes the status of the claim"
+               tests:
+                  - accepted_values:
+                      arguments:
+                       values: [Approved, Denied, Pending, Under Review]
+       
+             - name: severity_tier
+               data_type: varchar
+               description: "describes the approved amount of the claim table"
+               tests:
+                  - accepted_values:
+                      arguments:
+                       values: [Low, Medium, High]
+       
+             - name: gross_claim_amount
+               data_type: number
+               description: "describes claim amount of the claim table"
+       
+             - name: net_approved_amount
+               data_type: number
+               description: "it describes the net approved amount"
+       
+             - name: is_approved
+               data_type: boolean
+               description: "it describes claim status of the claim table"
+       
+             - name: dbt_updated_at
+               data_type: timestamp_ltz
+               description: "describes updated "
+       
+             - name: dbt_run_id
+               data_type: varchar
+               description: "describes dnt run id "

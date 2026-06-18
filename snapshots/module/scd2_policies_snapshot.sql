@@ -1,7 +1,7 @@
-{% snapshot snapshot_name %}
+{% snapshot scd2_policies_snapshot %}
     {{
         config(
-            target_schema='snashots',
+            target_schema='snapshots',
             target_database='demo_db',
             unique_key='policy_id',
             strategy='timestamp',

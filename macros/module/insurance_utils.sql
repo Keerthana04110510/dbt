@@ -1,6 +1,6 @@
 {% macro classify_risk(credit_score, risk_tier) %}
 
-{ {% if risk_tier=='high' %}
+{% if risk_tier=='high' %}
 
    case  when credit_score < 580 
          then 'critical'

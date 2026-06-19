@@ -1,12 +1,12 @@
 {{    config(
-             materialized='view'
+             materialized='table'
     )    }}
 
 select upper(account_number) as account_number,
        lower(account_type)as account_type,
-       TO_DATE(open_date, 'DD-MM-YYYY') as open_date,
+       to_date(open_date, 'DD-MM-YYYY') as open_date,
        current_timestamp as created_at,
        updated_at
-FROM {{ source('stage', 'bank_accounts') }}
+       from {{ source('stages_bank','bank_transactions')}}
 
 

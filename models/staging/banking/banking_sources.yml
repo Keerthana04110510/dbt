@@ -1,16 +1,42 @@
 version: 2
 
 sources:
-  - name: stg_transactions
+  - name: stages_bank
+    database: demo_db
+    schema: dbt_keerthana04110510
     tables:
       - name: bank_transactions
         description: Raw ledger of all customer money movements
         columns:
-          # - name: txn_id
-          #   tests:
-          #     - not_null
-          #     - unique
-          - name: account_number
+          - name: txn_id
+            tests:
               - not_null
+              - unique
+          - name: account_number
+            tests:
+              - not_null
+              - unique
+          - name: txn_type
+            tests:
+              - accepted_values:
+                 arguments:
+                   values: ['payment', 'transfer', 'withdraw', 'deposit']
+ 
+      - name: bank_accounts
+        description: account details of the customer
+        columns:
+          - name: customer_id
+            tests:
+              - not_null
+              - unique
+          - name: account_number
+            tests:
+              - not_null
+              - unique
+          - name: account_type
+            tests:
+              - accepted_values:
+                 arguments:
+                   values: ['checking', 'savings', 'current']
 
       

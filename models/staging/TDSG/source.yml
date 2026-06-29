@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: tdsg_source
+    database: dbt_training
+    schema: dbt_keerthana
+    tables:
+      - name: department
+      - name: division
+      - name: divisionmapping
+      - name: employees
+      - name: grn_details
+      - name: holidaycalendar
+      - name: kpiindicator
+      - name: prd_approvaltaskmaster
+      - name: prd_pomaster
+      - name: prd_purchasing_group_master
+      - name: purchaserhandlingdivision_prd
+      - name: ringipormap
+      - name: stg_managehistorymaster
+      - name: stg_pormaster
+      - name: stg_ringimaster

@@ -27,8 +27,8 @@ select
     sap_pr,
     issynced,
     sapissueorder,
-    pono,
-    ringicreatedby,
+    try_to_number(nullif(pono,'NULL')) as pono,
+    try_to_number(nullif(ringicreatedby,'NULL')) AS ringicreatedby,
     try_to_date(requireddate, 'dd-mm-yyyy hh24:mi') as requireddate,
     trim(status) as status,
     try_to_date(ringi_resubmitteddate, 'dd-mm-yyyy hh24:mi')

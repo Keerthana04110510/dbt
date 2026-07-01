@@ -38,7 +38,7 @@ LEFT JOIN {{ ref('dim_employee') }} emp
 ON por.ringicreatedby = emp.employeekey
 LEFT JOIN {{ ref('dim_date') }} submit_dt
 ON por.ringi_submitteddate = submit_dt.fulldate
-LEFT JOIN {{ ref('stg_ringipormaster') }} rpm
+LEFT JOIN {{ ref('stg_ringipormap') }} rpm
 ON por.porid = rpm.porid
 LEFT JOIN {{ ref('stg_stg_ringimaster') }} rm
 ON rpm.ringiid = rm.ringikey

@@ -1,13 +1,10 @@
 {{ config(materialized='view') }}
-
 WITH employees AS (
     SELECT * FROM {{ ref('stg_employees') }}
 ),
-
 department AS (
     SELECT * FROM {{ ref('stg_department') }}
 ),
-
 joined AS (
     SELECT
         e.EmployeeKey,

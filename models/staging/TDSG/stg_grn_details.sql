@@ -4,40 +4,82 @@
     )
 }}
 
-select
-    cast(purchasingdocument as int) as purchasingdocument,
-    cast(item as int) as int,
-    ringino,
-    porno,
-    companycode,
-    documenttype,
-    vendorcode,
-    purchasingorganization,
-    purchasinggroup,
-    paymentterm,
-    cast(currency as varchar) as currency,
-    conversion,
-    podocument,
-    materialcode,
-    cast(orderquantity as int) as orderquantity,
-    unitprice,
-    glaccount,
-    costcenter,
-    materialgroup,
-    plant,
-    tazcode,
-    hsn,
-    deliverycompletionindicators,
-    deletionindicator,
-    grnquantity,
-    totaldeliveredquantity,
-    pendingtodelivered,
-    freightcharges,
-    cast(poramount as number(18, 2)) as poramount,
-    try_to_date(nullif(deliverydate, 'NULL'), 'dd-mm-yyyy hh24:mi')
-        as deliverydate,
-    try_to_date(nullif(grndate, 'NULL'), 'dd-mm-yyyy hh24:mi') as grndate,
-    try_to_date(nullif(createddate, 'NULL'), 'dd-mm-yyyy hh24:mi')
-        as createddate
+SELECT
+    COALESCE(purchasingdocument, -1) AS purchasingdocument,
 
-from {{ source('tdsg_source','grn_details') }}
+    COALESCE(item, -1) AS item,
+
+    COALESCE(NULLIF(TRIM(ringino), ''), 'UNKNOWN') AS ringino,
+
+    COALESCE(NULLIF(TRIM(porno), ''), 'UNKNOWN') AS porno,
+
+    COALESCE(NULLIF(TRIM(companycode), ''), 'UNKNOWN') AS companycode,
+
+    COALESCE(NULLIF(TRIM(documenttype), ''), 'UNKNOWN') AS documenttype,
+
+    COALESCE(NULLIF(TRIM(vendorcode), ''), 'UNKNOWN') AS vendorcode,
+
+    COALESCE(NULLIF(TRIM(purchasingorganization), ''), 'UNKNOWN')
+        AS purchasingorganization,
+
+    COALESCE(NULLIF(TRIM(purchasinggroup), ''), 'UNKNOWN')
+        AS purchasinggroup,
+
+    COALESCE(NULLIF(TRIM(paymentterm), ''), 'UNKNOWN') AS paymentterm,
+
+    COALESCE(NULLIF(TRIM(currency), ''), 'UNKNOWN') AS currency,
+
+    COALESCE(conversion, 0) AS conversion,
+
+    COALESCE(NULLIF(TRIM(podocument), ''), 'UNKNOWN') AS podocument,
+
+    COALESCE(NULLIF(TRIM(materialcode), ''), 'UNKNOWN') AS materialcode,
+
+    COALESCE(orderquantity, 0) AS orderquantity,
+
+    COALESCE(unitprice, 0.00) AS unitprice,
+
+    COALESCE(NULLIF(TRIM(glaccount), ''), 'UNKNOWN') AS glaccount,
+
+    COALESCE(NULLIF(TRIM(costcenter), ''), 'UNKNOWN') AS costcenter,
+
+    COALESCE(NULLIF(TRIM(materialgroup), ''), 'UNKNOWN') AS materialgroup,
+
+    COALESCE(NULLIF(TRIM(plant), ''), 'UNKNOWN') AS plant,
+
+    COALESCE(NULLIF(TRIM(tazcode), ''), 'UNKNOWN') AS tazcode,
+
+    COALESCE(NULLIF(TRIM(hsn), ''), 'UNKNOWN') AS hsn,
+
+    COALESCE(NULLIF(TRIM(deliverycompletionindicators), ''), 'UNKNOWN')
+        AS deliverycompletionindicators,
+
+    COALESCE(NULLIF(TRIM(deletionindicator), ''), 'UNKNOWN')
+        AS deletionindicator,
+
+    COALESCE(grnquantity, 0.00) AS grnquantity,
+
+    COALESCE(totaldeliveredquantity, 0.00) AS totaldeliveredquantity,
+
+    COALESCE(pendingtodelivered, 0.0) AS pendingtodelivered,
+
+    COALESCE(freightcharges, 0.00) AS freightcharges,
+
+    COALESCE(poramount, 0.00) AS poramount,
+
+    COALESCE(
+        TRY_TO_DATE(NULLIF(TRIM(deliverydate), 'NULL'), 'DD-MM-YYYY'),
+        TO_DATE('1900-01-01')
+    ) AS deliverydate,
+
+    COALESCE(
+        TRY_TO_DATE(NULLIF(TRIM(grndate), 'NULL'), 'DD-MM-YYYY'),
+        TO_DATE('1900-01-01')
+    ) AS grndate,
+
+    COALESCE(
+        TRY_TO_DATE(NULLIF(TRIM(createddate), 'NULL'), 'DD-MM-YYYY'),
+        TO_DATE('1900-01-01')
+    ) AS createddate
+
+FROM {{ source('tdsg_source', 'grn_details') }}

@@ -4,8 +4,23 @@
     )
 }}
 
-select
-    cast(id as int) as id,
-    try_to_date(holidaydate, 'dd-mm-yyyy hh24:mi') as holidaydate
+SELECT
+    COALESCE(id, -1) AS id,
 
-from {{ source('tdsg_source','holidaycalendar') }} 
+    COALESCE(
+        CAST(
+            COALESCE(
+                TRY_TO_TIMESTAMP(
+                    NULLIF(TRIM(holidaydate), 'NULL'),
+                    'DD-MM-YYYY HH24:MI'
+                ),
+                TRY_TO_TIMESTAMP(
+                    NULLIF(TRIM(holidaydate), 'NULL'),
+                    'DD-MM-YYYY'
+                )
+            ) AS DATE
+        ),
+        TO_DATE('1900-01-01')
+    ) AS holidaydate
+
+FROM {{ source('tdsg_source', 'holidaycalendar') }}

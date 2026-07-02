@@ -20,8 +20,6 @@ current_data AS (
         IsActive,
         DepartmentName,
         DivisionKey,
-        -- Surrogate key combines business key + a hash of changing attrs
-        -- so a NEW row is created whenever DepartmentKey/EmpDesignation change
         {{ dbt_utils.generate_surrogate_key([
             'EmployeeKey', 'DepartmentKey', 'EmpDesignation'
         ]) }} AS employee_sk
@@ -30,8 +28,6 @@ current_data AS (
 
 {% if is_incremental() %}
 
--- ── INCREMENTAL RUN: only bring in rows whose surrogate key
---    does not already exist (i.e. something changed) ──────
 SELECT
     employee_sk,
     EmployeeKey,
@@ -51,7 +47,6 @@ WHERE employee_sk NOT IN (SELECT employee_sk FROM {{ this }})
 
 {% else %}
 
--- ── FIRST RUN: load everything ─────────────────────────────
 SELECT
     employee_sk,
     EmployeeKey,

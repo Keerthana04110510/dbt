@@ -7,38 +7,22 @@
 }}
 
 WITH base AS (
-
     SELECT *
     FROM {{ ref('int_delivery_enriched') }}
-
 ),
-
 final AS (
-
 SELECT
-
     PONumber,
-
     POItem,
-
     PORNumber,
-
     PODate,
-
     DeliveryDate,
-
     GRNDate,
-
     VendorName,
-
     DivisionName,
-
     DepartmentName,
-
     PurchaserEmployeeID,
-
     PurchaserName,
-
     OrderQuantity,
 
     GRNQuantity,
@@ -52,49 +36,30 @@ SELECT
 
         WHEN TotalDeliveredQuantity > OrderQuantity
             THEN 0
-
         ELSE
             OrderQuantity - TotalDeliveredQuantity
-
     END AS PendingGRNQuantity,
-
     CASE
-
         WHEN OrderQuantity <=0
             THEN 'Order Qty Missing'
-
         WHEN TotalDeliveredQuantity > OrderQuantity
             THEN 'Over Delivered'
-
         WHEN TotalDeliveredQuantity = OrderQuantity
             THEN 'Completed'
-
         WHEN TotalDeliveredQuantity >0
-            THEN 'Partial'
+          THEN 'Partial'
 
         ELSE 'Pending'
-
     END AS DeliveryStatus,
-
-
     CASE
-
         WHEN GRNDate IS NULL
             OR DeliveryDate IS NULL
-
         THEN NULL
-
         WHEN GRNDate<=DeliveryDate
-
         THEN 'Y'
-
         ELSE 'N'
-
     END AS IsOnTimeGRN,
-
-
     CASE
-
         WHEN GRNDate>DeliveryDate
 
         THEN DATEDIFF(

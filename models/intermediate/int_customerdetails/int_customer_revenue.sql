@@ -10,4 +10,4 @@ select c.id AS customer_id,
     from {{ ref('stg_r_customers')}} c
     left join {{ ref('stg_r_orders')}} o
     on c.id=o.customer
-    group by c.id
+    group by c.id                       

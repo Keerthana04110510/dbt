@@ -15,6 +15,7 @@ SELECT
     submit_dt.datekey,
     rpm.ringiid,
     emp.employeekey,
+    por.ringicreatedby,
 por.status,
 por.pono,
 por.reviseno,

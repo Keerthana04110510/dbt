@@ -1,83 +1,92 @@
-{{
-    config(
-        materialized='incremental',
-        unique_key=['PONumber','POItem','GRNDate'],
-        incremental_strategy='merge'
-    )
-}}
+{{ config(
+    materialized='incremental',
+    unique_key=['PONumber','POItem','GRNDate'],
+    incremental_strategy='merge'
+) }}
 
 WITH base AS (
-    SELECT *
-    FROM {{ ref('int_delivery_enriched') }}
+
+SELECT *
+
+FROM {{ ref('int_delivery_enriched') }}
+
 ),
+
 final AS (
+
 SELECT
-    PONumber,
-    POItem,
-    PORNumber,
-    PODate,
-    DeliveryDate,
-    GRNDate,
-    VendorName,
-    DivisionName,
-    DepartmentName,
-    PurchaserEmployeeID,
-    PurchaserName,
-    OrderQuantity,
 
-    GRNQuantity,
+{{ dbt_utils.generate_surrogate_key(['PONumber','POItem','GRNDate']) }} AS ID,
 
-    TotalDeliveredQuantity,
+PONumber,
 
-    CASE
+POItem,
 
-        WHEN OrderQuantity <= 0
-            THEN NULL
+PORNumber,
 
-        WHEN TotalDeliveredQuantity > OrderQuantity
-            THEN 0
-        ELSE
-            OrderQuantity - TotalDeliveredQuantity
-    END AS PendingGRNQuantity,
-    CASE
-        WHEN OrderQuantity <=0
-            THEN 'Order Qty Missing'
-        WHEN TotalDeliveredQuantity > OrderQuantity
-            THEN 'Over Delivered'
-        WHEN TotalDeliveredQuantity = OrderQuantity
-            THEN 'Completed'
-        WHEN TotalDeliveredQuantity >0
-          THEN 'Partial'
+PODate,
 
-        ELSE 'Pending'
-    END AS DeliveryStatus,
-    CASE
-        WHEN GRNDate IS NULL
-            OR DeliveryDate IS NULL
-        THEN NULL
-        WHEN GRNDate<=DeliveryDate
-        THEN 'Y'
-        ELSE 'N'
-    END AS IsOnTimeGRN,
-    CASE
-        WHEN GRNDate>DeliveryDate
+DeliveryDate,
 
-        THEN DATEDIFF(
+GRNDate,
 
-                DAY,
+VendorCode,
 
-                DeliveryDate,
+DepartmentKey,
 
-                GRNDate
+DivisionKey,
 
-             )
+PurchaserID,
 
-        ELSE 0
+OrderQuantity,
 
-    END AS DeliveryDelayDays,
+GRNQuantity,
 
+TotalDeliveredQuantity,
 
-    {{ audit_columns('SAP_ERP') }}
+CASE
+
+WHEN OrderQuantity<=0 THEN NULL
+
+WHEN TotalDeliveredQuantity>OrderQuantity THEN 0
+
+ELSE OrderQuantity-TotalDeliveredQuantity
+
+END AS PendingGRNQuantity,
+
+CASE
+
+WHEN OrderQuantity<=0 THEN 'Order Qty Missing'
+
+WHEN TotalDeliveredQuantity>OrderQuantity THEN 'Over Delivered'
+
+WHEN TotalDeliveredQuantity=OrderQuantity THEN 'Completed'
+
+WHEN TotalDeliveredQuantity>0 THEN 'Partial'
+
+ELSE 'Pending'
+
+END AS DeliveryStatus,
+
+CASE
+
+WHEN GRNDate<=DeliveryDate THEN 'Y'
+
+ELSE 'N'
+
+END AS IsOnTimeGRN,
+
+CASE
+
+WHEN GRNDate>DeliveryDate
+
+THEN DATEDIFF(DAY,DeliveryDate,GRNDate)
+
+ELSE 0
+
+END AS DeliveryDelayDays,
+
+{{ audit_columns('SAP_ERP') }}
 
 FROM base
 
@@ -96,7 +105,9 @@ SELECT 1
 FROM {{ this }} t
 
 WHERE t.PONumber=final.PONumber
+
 AND t.POItem=final.POItem
+
 AND t.GRNDate=final.GRNDate
 
 )

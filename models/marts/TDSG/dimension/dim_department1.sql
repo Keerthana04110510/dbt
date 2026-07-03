@@ -10,6 +10,7 @@ final AS (
         DivisionKey,
         DepartmentName,
         DepartmentHead,
+        CreatedDate,
         UPPER(
             REGEXP_REPLACE(
                 REGEXP_REPLACE(DepartmentName, '[^A-Za-z ]', ''),  

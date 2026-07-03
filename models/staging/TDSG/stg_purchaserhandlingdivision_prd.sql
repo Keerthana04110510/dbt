@@ -29,13 +29,10 @@ SELECT
         TO_TIMESTAMP_NTZ('1900-01-01 00:00:00')
     ) AS fromdate,
 
-    COALESCE(
-        TRY_TO_TIMESTAMP_NTZ(
-            NULLIF(TRIM(todate), 'NULL'),
-            'DD-MM-YYYY HH24:MI'
-        ),
-        TO_TIMESTAMP_NTZ('1900-01-01 00:00:00')
-    ) AS todate,
+      TRY_TO_TIMESTAMP_NTZ(
+    NULLIF(TRIM(todate), 'NULL'),
+    'DD-MM-YYYY HH24:MI'
+) AS todate,
 
     COALESCE(
         TRY_TO_TIMESTAMP_NTZ(

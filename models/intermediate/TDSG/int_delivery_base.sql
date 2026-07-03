@@ -1,31 +1,24 @@
 {{ config(materialized='view') }}
 
-WITH
-/*=========================================================
-GRN CLEAN
-=========================================================*/
-
-grn_clean AS (
+WITH grn_clean AS (
 
     SELECT
 
-        TRIM(CAST(PurchasingDocument AS VARCHAR))      AS PONumber,
+        TRIM(CAST(PurchasingDocument AS VARCHAR)) AS PONumber,
 
-        TRIM(CAST(Item AS VARCHAR))                    AS POItem,
+        TRIM(CAST(Item AS VARCHAR)) AS POItem,
 
-        TRIM(PORNo)                                   AS PORNumber,
+        TRIM(PORNo) AS PORNumber,
 
-        TRY_TO_DATE(PODocument)                       AS PODate,
+        TRY_TO_DATE(PODocument,'DD-MM-YYYY') AS PODate,
 
         DeliveryDate,
 
         GRNDate,
 
-        UPPER(TRIM(Currency))                         AS Currency,
+        CAST(OrderQuantity AS DECIMAL(18,3)) AS OrderQuantity,
 
-        CAST(OrderQuantity AS DECIMAL(18,3))          AS OrderQuantity,
-
-        CAST(GRNQuantity AS DECIMAL(18,3))            AS GRNQuantity,
+        CAST(GRNQuantity AS DECIMAL(18,3)) AS GRNQuantity,
 
         CAST(TotalDeliveredQuantity AS DECIMAL(18,3)) AS TotalDeliveredQuantity
 
@@ -34,10 +27,6 @@ grn_clean AS (
     WHERE GRNDate <> DATE '1900-01-01'
 
 ),
-
-/*=========================================================
-Aggregate duplicate GRNs
-=========================================================*/
 
 grn_base AS (
 
@@ -49,17 +38,17 @@ grn_base AS (
 
         GRNDate,
 
-        MAX(PORNumber)                 AS PORNumber,
+        MAX(PORNumber) AS PORNumber,
 
-        MAX(PODate)                    AS PODate,
+        MAX(PODate) AS PODate,
 
-        MAX(DeliveryDate)              AS DeliveryDate,
+        MAX(DeliveryDate) AS DeliveryDate,
 
-        MAX(OrderQuantity)             AS OrderQuantity,
+        MAX(OrderQuantity) AS OrderQuantity,
 
-        SUM(GRNQuantity)               AS GRNQuantity,
+        SUM(GRNQuantity) AS GRNQuantity,
 
-        SUM(TotalDeliveredQuantity)    AS TotalDeliveredQuantity
+        SUM(TotalDeliveredQuantity) AS TotalDeliveredQuantity
 
     FROM grn_clean
 
@@ -73,19 +62,15 @@ grn_base AS (
 
 ),
 
-/*=========================================================
-Latest PO Header
-=========================================================*/
-
 po_rank AS (
 
     SELECT
 
-        TRIM(PONumber)                     AS PONumber,
+        TRIM(PONumber) AS PONumber,
 
-        TRIM(VendorName)                   AS VendorName,
+        VendorName,
 
-        Currency,
+        VendorCode,
 
         PipelineRunDate,
 
@@ -93,7 +78,7 @@ po_rank AS (
 
             PARTITION BY TRIM(PONumber)
 
-            ORDER BY PipelineRunDate DESC NULLS LAST
+            ORDER BY PipelineRunDate DESC
 
         ) rn
 
@@ -109,17 +94,13 @@ latest_po AS (
 
         VendorName,
 
-        Currency
+        VendorCode
 
     FROM po_rank
 
     WHERE rn=1
 
 ),
-
-/*=========================================================
-Remove Duplicate POR
-=========================================================*/
 
 por_rank AS (
 
@@ -151,17 +132,17 @@ por_clean AS (
 
 ),
 
-/*=========================================================
-Department + Division
-=========================================================*/
-
 por_department AS (
 
     SELECT
 
         TRIM(p.PorNo) AS PORNumber,
 
+        d.DepartmentKey,
+
         d.DepartmentName,
+
+        d.DivisionKey,
 
         dv.DivisionName
 
@@ -175,13 +156,7 @@ por_department AS (
 
         ON d.DivisionKey=dv.DivisionKey
 
-),
-
-/*=========================================================
-Final Base
-=========================================================*/
-
-final AS (
+)
 
 SELECT
 
@@ -197,32 +172,28 @@ SELECT
 
     g.GRNDate,
 
-    p.VendorName,
+    p.VendorCode,
 
-    d.DivisionName,
+    d.DepartmentKey,
+
+    d.DivisionKey,
 
     d.DepartmentName,
+
+    d.DivisionName,
 
     g.OrderQuantity,
 
     g.GRNQuantity,
 
-    g.TotalDeliveredQuantity,
-
-    p.Currency
+    g.TotalDeliveredQuantity
 
 FROM grn_base g
 
 LEFT JOIN latest_po p
 
-    ON g.PONumber=p.PONumber
+ON g.PONumber=p.PONumber
 
 LEFT JOIN por_department d
 
-    ON g.PORNumber=d.PORNumber
-
-)
-
-SELECT *
-
-FROM final
+ON g.PORNumber=d.PORNumber

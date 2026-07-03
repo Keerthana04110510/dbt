@@ -2,62 +2,37 @@
 
 WITH base AS (
 
-    SELECT *
-    FROM {{ ref('int_delivery_base') }}
+SELECT *
+
+FROM {{ ref('int_delivery_base') }}
 
 ),
 
 purchaser AS (
 
-    SELECT DISTINCT
+SELECT
 
-        PurchaserID,
+PurchaserID,
 
-        Division,
+PurchaserName,
 
-        Department,
+Division,
 
-        FromDate,
+Department,
 
-        ToDate
+FromDate,
 
-    FROM {{ ref('dim_purchaser1') }}
+ToDate
 
-),
+FROM {{ ref('dim_purchaser1') }}
 
-final AS (
+)
 
 SELECT
 
-    base.PONumber,
+base.*,
 
-    base.POItem,
-
-    base.PORNumber,
-
-    base.PODate,
-
-    base.DeliveryDate,
-
-    base.GRNDate,
-
-    base.VendorCode,
-
-    base.DepartmentKey,
-
-    base.DivisionKey,
-
-    base.DepartmentName,
-
-    base.DivisionName,
-
-    COALESCE(pur.PurchaserID,-1) AS PurchaserID,
-
-    base.OrderQuantity,
-
-    base.GRNQuantity,
-
-    base.TotalDeliveredQuantity
+pur.PurchaserID
 
 FROM base
 
@@ -71,11 +46,8 @@ AND UPPER(TRIM(base.DepartmentName))
 =
 UPPER(TRIM(pur.Department))
 
-AND base.GRNDate BETWEEN pur.FromDate
-                     AND COALESCE(pur.ToDate,DATE '9999-12-31')
-
-)
-
-SELECT *
-
-FROM final
+AND base.GRNDate
+BETWEEN
+pur.FromDate
+AND
+COALESCE(pur.ToDate,DATE '9999-12-31')

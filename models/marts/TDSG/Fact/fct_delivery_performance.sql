@@ -1,7 +1,11 @@
 {{ config(
+
     materialized='incremental',
+
     unique_key=['PONumber','POItem','GRNDate'],
+
     incremental_strategy='merge'
+
 ) }}
 
 WITH base AS (
@@ -16,7 +20,17 @@ final AS (
 
 SELECT
 
-{{ dbt_utils.generate_surrogate_key(['PONumber','POItem','GRNDate']) }} AS ID,
+{{ dbt_utils.generate_surrogate_key([
+
+'PONumber',
+
+'POItem',
+
+'PORNumber',
+
+'GRNDate'
+
+]) }} AS ID,
 
 PONumber,
 
@@ -30,13 +44,13 @@ DeliveryDate,
 
 GRNDate,
 
-VendorCode,
+COALESCE(VendorCode,'UNK') AS VendorCode,
 
-DepartmentKey,
+COALESCE(DepartmentKey,-1) AS DepartmentKey,
 
-DivisionKey,
+COALESCE(DivisionKey,-1) AS DivisionKey,
 
-PurchaserID,
+COALESCE(PurchaserID,-1) AS PurchaserID,
 
 OrderQuantity,
 
@@ -70,6 +84,9 @@ END AS DeliveryStatus,
 
 CASE
 
+WHEN GRNDate IS NULL
+OR DeliveryDate IS NULL THEN NULL
+
 WHEN GRNDate<=DeliveryDate THEN 'Y'
 
 ELSE 'N'
@@ -77,6 +94,9 @@ ELSE 'N'
 END AS IsOnTimeGRN,
 
 CASE
+
+WHEN GRNDate IS NULL
+OR DeliveryDate IS NULL THEN NULL
 
 WHEN GRNDate>DeliveryDate
 

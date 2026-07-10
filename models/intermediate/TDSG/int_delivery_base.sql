@@ -1,4 +1,8 @@
-{{ config(materialized='view') }}
+{{ config(materialized='view',
+        tags= ['fact_tables'] )
+    }}
+
+
 WITH grn_clean AS (
     SELECT
         TRIM(CAST(PurchasingDocument AS VARCHAR)) AS PONumber,

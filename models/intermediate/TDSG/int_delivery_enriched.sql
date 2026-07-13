@@ -1,4 +1,5 @@
-{{ config(materialized='view') }}
+{{ config(materialized='view',
+         tags= ['fact_tables']) }}
 WITH base AS (
 SELECT *
 FROM {{ ref('int_delivery_base') }}

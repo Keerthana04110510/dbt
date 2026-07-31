@@ -1,8 +1,6 @@
 {% snapshot snap_employee %}
-
 {{
     config(
-
         target_database='DBT_TRAINING',
         target_schema='DBT_KEERTHANA',
         unique_key='EmployeeKey',
@@ -16,13 +14,10 @@
             'Email',
             'IsActive'
         ],
-
         invalidate_hard_deletes=True
     )
 }}
-
 SELECT
-
     EmployeeKey,
     DepartmentKey,
     ReportingManagerKey,
@@ -31,7 +26,5 @@ SELECT
     EmpDesignation,
     Email,
     IsActive
-
 FROM {{ ref('stg_employees') }}
-
 {% endsnapshot %}

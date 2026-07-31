@@ -3,7 +3,6 @@
     )    }}
 
 
-
 select
     updated_at,
     upper(account_number) as account_number,

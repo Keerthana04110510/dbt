@@ -64,3 +64,4 @@ SELECT
 FROM current_data
 
 {% endif %}
+

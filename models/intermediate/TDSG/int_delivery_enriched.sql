@@ -28,5 +28,5 @@ UPPER(TRIM(pur.Department))
 AND base.GRNDate
 BETWEEN
 pur.FromDate
-AND
+AND                                  
 COALESCE(pur.ToDate,DATE '9999-12-31')
